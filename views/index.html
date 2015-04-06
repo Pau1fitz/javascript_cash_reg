@@ -11,7 +11,13 @@
   <div id="address"></div>
   <div id="phone"></div>
   <ul id="orderList"></ul>
-  <div id="total"></div>
+  <div id="total_paid">Amount due: $0.00</div>
+  <div id="change_due"></div>
+
+  <form>
+    <input type="text" id="uniqueID" />
+    <input type="button" onclick="changeDue()">
+  </form>
 
  <script src="js/getData.js"></script>
  <script src="js/register.js"></script>
