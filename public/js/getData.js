@@ -1,10 +1,11 @@
 var rounded_total;
-var change;
-var nameValue;
+
+function updateDoc(id, content ){
+  document.getElementById(id).innerHTML = content;
+}
 
 document.addEventListener("DOMContentLoaded", function(event) {
   loadJSONDoc();
-
 });
 
 function loadJSONDoc()
@@ -22,10 +23,7 @@ xmlhttp.onreadystatechange=function()
     var shop = answer[0].shopName;
     var address = answer[0].address;
     var phone = answer[0].phone;
-    document.getElementById('shopName').innerHTML = shop;
-    document.getElementById('address').innerHTML = address;
-    document.getElementById('phone').innerHTML = "+1" + phone;
-
+    updateDoc('shopName', shop), updateDoc('address', address), updateDoc('phone', phone)
     var items = answer[0].prices[0];
     var total = 0;
 
@@ -40,8 +38,10 @@ xmlhttp.onreadystatechange=function()
       node.appendChild(p);
       };
     }
+
     var total = 0;
     var update = document.getElementsByTagName("p");
+
     for(var i=0; i< update.length; ++i) {
     update[i].onclick = function() {
     var num = parseFloat(this.className).toFixed(2);
@@ -58,9 +58,11 @@ xmlhttp.send();
 }
 
 function changeDue(event){
+
+  var change;
+  var nameValue;
   var pay = document.getElementById('uniqueID').value
   document.getElementById('change_due').innerHTML = (pay - rounded_total);
-  event.preventDefault()
 };
 
 
